@@ -1,0 +1,31 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  https://rowguard-api.rowguard-api.workers.dev/openapi.json +
+  https://rowguard-api.rowguard-api.workers.dev/v1/example +
+  https://rowguard-api.rowguard-api.workers.dev/llms.txt
+note: >-
+  RowGuard has no separate test/live key split — it runs on a single production
+  origin behind the RapidAPI gateway. Its "try it safely" surface is the free
+  BASIC evaluation tier plus two unauthenticated helper endpoints. No test cards,
+  bank accounts, time simulation or fixture triggers exist (not a payments API and
+  it persists no state). Values below are published verbatim by the provider.
+test_live_split: none
+free_evaluation:
+  tier: BASIC
+  quota: 25 requests per month, 5 requests per minute
+  cost: USD 0
+  signup: https://rapidapi.com/auth/sign-up
+unauthenticated_helpers:
+- endpoint: GET /v1/example
+  purpose: Returns a fixed, copy-ready ValidationRequest body (sku/email/quantity sample) to POST to /v1/validate.
+  status: 200
+- endpoint: GET /healthz
+  purpose: Liveness/version probe; returns {"status":"ok","version":"0.1.0"}.
+  status: 200
+fixture:
+  source: GET /v1/example
+  body: >-
+    {"csv":"sku,email,quantity\nA-1,ana@example.com,3\nA-1,invalid-email,-1\nB-2,luis@example.com,5",
+    "schema":[{"name":"sku","required":true,"unique":true},{"name":"email","type":"email","required":true},
+    {"name":"quantity","type":"integer","min":0}],"include_data":true}

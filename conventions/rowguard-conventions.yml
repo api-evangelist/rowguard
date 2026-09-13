@@ -1,0 +1,48 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json + https://rowguard-api.rowguard-api.workers.dev/security
+note: >-
+  Cross-cutting semantics derived from the OpenAPI contract and the published
+  security page. RowGuard is a single stateless validation endpoint: it stores
+  nothing and mutates no server-side resource, which is why several dimensions
+  are na.
+auth:
+  style: apiKey header at the RapidAPI gateway (X-RapidAPI-Key + X-RapidAPI-Host)
+  note: The workers.dev origin accepts only gateway-authenticated requests.
+versioning:
+  style: URL path prefix (/v1/)
+  current: 0.1.0
+idempotency:
+  coverage: na
+  note: >-
+    The single write-shaped operation (POST /v1/validate) is a pure, stateless
+    validation call that stores nothing and creates no resource; retrying it is
+    inherently safe. No Idempotency-Key header is documented or needed.
+pagination:
+  style: none
+  note: Results are bounded by request (<=1,000 rows, max_errors 1-200) and returned in one response.
+error_envelope:
+  shape: '{ "error": { "code", "message", "details"? }, "request_id" }'
+  standard: custom (not RFC 9457)
+  cross_ref: errors/rowguard-problem-types.yml
+request_id:
+  header: X-Request-Id
+  body_field: request_id (uuid, present on both success and error bodies)
+  observed: true
+rate_limit_signaling:
+  headers: [Retry-After]
+  exhaustion_status: 429
+  cross_ref: rate-limits/rowguard-rate-limits.yml
+field_conventions:
+  delimiter: configurable (',' ';' tab '|'), default ','
+  trim: default true
+  formula_policy: reject | warn (spreadsheet-formula CSV injection guard)
+reversibility:
+  status: na
+  note: >-
+    RowGuard performs read-only, in-memory CSV validation and persists nothing.
+    There is no created, updated or deleted resource to reverse, so cancel /
+    refund / undo semantics do not apply.
+dry_run_mode:
+  status: na
+  note: The entire API is a non-mutating validation preview; there is no live action to rehearse.

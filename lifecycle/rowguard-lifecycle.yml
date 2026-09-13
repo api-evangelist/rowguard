@@ -1,0 +1,27 @@
+generated: '2026-09-13'
+method: searched
+source: >-
+  openapi/rowguard-openapi.json +
+  https://rowguard-api.rowguard-api.workers.dev/llms.txt +
+  https://rowguard-api.rowguard-api.workers.dev/healthz
+note: >-
+  Early-stage MVP. Versioning is by URL path prefix; the provider states plainly
+  there is no contractual uptime SLA. No deprecation policy, Sunset/Deprecation
+  header commitment, or dated changelog was found on the origin, the RapidAPI
+  listing, or the GitHub examples repo.
+versioning:
+  scheme: URL path prefix
+  current_version: 0.1.0
+  path_prefix: /v1/
+sla:
+  present: false
+  statement: "The MVP has no contractual uptime SLA."
+health_endpoint:
+  url: https://rowguard-api.rowguard-api.workers.dev/healthz
+  status: 200
+  body: '{"status":"ok","version":"0.1.0"}'
+status_page:
+  present: false
+deprecation_policy:
+  present: false
+  deprecated_operations: []

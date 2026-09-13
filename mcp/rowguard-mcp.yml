@@ -1,0 +1,31 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json
+note: >-
+  No official hosted or stdio MCP server was found for RowGuard (no mention on the
+  origin, llms.txt, RapidAPI listing, or GitHub examples repo). The tools below are
+  a DERIVED candidate mapping from OpenAPI operations, not a shipped server.
+status: candidate
+deployment:
+  mode: none
+  auth: api-key
+  verified: derived
+tools:
+- name: validate_csv
+  operationId: validateCsv
+  method: POST
+  path: /v1/validate
+  description: Validate UTF-8 CSV text against a caller-supplied column schema; returns record-level errors, duplicate detection and optional valid rows.
+  auth: RapidAPI gateway key required
+- name: get_example
+  operationId: getExample
+  method: GET
+  path: /v1/example
+  description: Fetch a fixed, copy-ready validation request body.
+  auth: none
+- name: health
+  operationId: health
+  method: GET
+  path: /healthz
+  description: Service liveness and version.
+  auth: none

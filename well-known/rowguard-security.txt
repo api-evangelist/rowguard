@@ -1,0 +1,5 @@
+Contact: https://github.com/Frere527/rowguard-api-examples/security/advisories/new
+Expires: 2027-09-13T00:00:00Z
+Preferred-Languages: en, es
+Canonical: https://rowguard-api.rowguard-api.workers.dev/.well-known/security.txt
+Policy: https://rowguard-api.rowguard-api.workers.dev/security

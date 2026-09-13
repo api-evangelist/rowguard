@@ -1,0 +1,29 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json + https://rowguard-api.rowguard-api.workers.dev/security
+note: >-
+  Assessed against cross-cutting standards. RowGuard is a single-purpose CSV
+  validation endpoint with apiKey (RapidAPI gateway) auth. It declares no OAuth,
+  no domain/vertical standard (CSV validation has no ratified market spec), and a
+  custom error envelope rather than RFC 9457. Reward-only: absences are honest,
+  not penalties.
+conformance:
+- id: rfc9457
+  conforms: false
+  evidence: Errors use a custom { error, request_id } envelope, not application/problem+json.
+- id: oauth2
+  conforms: false
+  evidence: Only apiKey (X-RapidAPI-Key header) security scheme is declared.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header; the sole operation is stateless/idempotent by nature.
+- id: pagination
+  conforms: false
+  evidence: Bounded single-response results; no pagination model.
+domain_standard: none
+domain_standard_note: >-
+  CSV validation is not governed by a ratified domain standard (no SCIM/OData/HL7/
+  X12/ISO-20022 analogue). No domain-standard conformance is asserted.

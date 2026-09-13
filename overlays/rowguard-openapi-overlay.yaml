@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: RowGuard API Evangelist enrichment overlay
+  version: 1.0.0
+x-provenance:
+  generated: '2026-09-13'
+  method: generated
+  source: openapi/rowguard-openapi.json
+  note: >-
+    Non-destructive overlay capturing API Evangelist enrichment notes for the
+    RowGuard OpenAPI. Does not mutate the original contract.
+extends: ../openapi/rowguard-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apis-io-enriched: '2026-09-13'
+    x-distribution: RapidAPI marketplace only; origin accepts gateway-authenticated requests only.
+- target: $.paths['/v1/validate'].post
+  update:
+    x-idempotency: Stateless, non-persisting validation; safe to retry.
+    x-rate-limit-signaling: 429 with Retry-After; quotas vary by RapidAPI plan.
+- target: $.paths['/v1/example'].get
+  update:
+    x-sandbox: Unauthenticated fixed-example helper for onboarding.
+- target: $.paths['/healthz'].get
+  update:
+    x-purpose: Liveness and version probe.

@@ -1,0 +1,31 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json
+note: >-
+  Derived from OpenAPI component schemas. RowGuard is request/response only — there
+  are no persisted entities or id-referenced resources, so relationships are
+  compositional ($ref containment) rather than has_many/belongs_to over stored ids.
+entities:
+- name: ValidationRequest
+  role: request
+  fields: [csv, schema, delimiter, trim, allow_extra_columns, formula_policy, include_data, max_errors]
+  note: schema is an array of column rules (name, type, required, unique, enum, min, max, max_length).
+- name: ValidationResult
+  role: response
+  fields: [version, request_id, valid, summary, columns, errors, data, meta]
+  note: data[] present only when include_data=true; excludes duplicate occurrences.
+- name: ValidationError
+  role: embedded (ValidationResult.errors[])
+  fields: [code, message, row, column, end_line, severity]
+- name: ApiError
+  role: error envelope
+  fields: [error.code, error.message, error.details, request_id]
+relationships:
+- from: ValidationResult
+  to: ValidationError
+  kind: has_many
+  via: errors[]
+- from: ValidationRequest
+  to: ColumnSchemaRule
+  kind: has_many
+  via: schema[]

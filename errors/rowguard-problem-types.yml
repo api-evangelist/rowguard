@@ -1,0 +1,36 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json
+note: >-
+  Derived from the OpenAPI 4xx/5xx responses on POST /v1/validate. The error
+  envelope is a custom ApiError object ({ error: { code, message, details? },
+  request_id }), NOT RFC 9457 application/problem+json. Every error carries a
+  UUID request_id (also returned as the X-Request-Id header). Retry-After is
+  present on 429 and temporary dependency failures.
+format: custom
+envelope:
+  shape: '{ "error": { "code": string, "message": string, "details"?: any }, "request_id": uuid }'
+  correlation_id: request_id (uuid); also X-Request-Id response header
+problem_types:
+- status: 400
+  title: Invalid UTF-8 JSON or interrupted body
+- status: 401
+  title: Missing or invalid gateway authentication
+- status: 408
+  title: Body upload timeout
+- status: 413
+  title: Body, record, row or column limit exceeded
+- status: 415
+  title: Unsupported content type, charset or compression
+- status: 422
+  title: Request schema or CSV structural validation failed
+- status: 429
+  title: Rate limit exceeded (Retry-After present)
+- status: 500
+  title: Internal error
+- status: 503
+  title: Temporary dependency failure (Retry-After present)
+note_semantics: >-
+  A completed validation of an invalid CSV still returns HTTP 200; the row-level
+  problems live in ValidationResult.errors[] (code, message, row, column,
+  end_line, severity), which is distinct from these transport-level errors.

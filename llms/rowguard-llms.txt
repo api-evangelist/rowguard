@@ -1,0 +1,30 @@
+# RowGuard CSV Validation API
+
+> Validate UTF-8 CSV data against a caller-supplied schema before importing it into a database or automation workflow.
+
+RowGuard reports missing values, type errors, numeric bounds, allowed-value failures, duplicate identifiers, and possible spreadsheet formulas. It returns structured record and column references and can include rows that passed validation. It does not store files or call an AI model.
+
+## Use RowGuard
+
+- Product and service status: https://rowguard-api.rowguard-api.workers.dev/
+- OpenAPI 3.1 contract: https://rowguard-api.rowguard-api.workers.dev/openapi.json
+- Fixed request example: https://rowguard-api.rowguard-api.workers.dev/v1/example
+- Pricing and subscription: https://rapidapi.com/Frere527/api/rowguard-csv-validation1
+- Copy-ready examples: https://github.com/Frere527/rowguard-api-examples
+- Postman workspace: https://www.postman.com/dark-shadow-744867/rowguard-csv-validation-api/overview
+- Published documentation: https://documenter.getpostman.com/view/58184962/2sBYAytUGg
+- Machine-readable onboarding: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-onboarding
+- Security policy: https://rowguard-api.rowguard-api.workers.dev/security
+
+## Access
+
+Subscribe through RapidAPI. Send validation requests to the gateway with the X-RapidAPI-Key and X-RapidAPI-Host headers supplied by RapidAPI. Do not send a consumer key to the workers.dev origin; validation at the origin is restricted to the marketplace gateway.
+
+## Limits and behavior
+
+- UTF-8 CSV with comma, semicolon, tab, or pipe delimiter.
+- Up to 1,000 data rows, 50 columns, and a 256 KiB JSON body per request.
+- Completed validation returns HTTP 200 even when the CSV is invalid; inspect valid, summary, and errors.
+- Malformed input returns structured 4xx errors with a request ID.
+- Free evaluation includes 25 requests per month; paid plans start at USD 15 per month.
+- The MVP has no contractual uptime SLA.

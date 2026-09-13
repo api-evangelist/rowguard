@@ -1,0 +1,34 @@
+generated: '2026-09-13'
+method: searched
+source: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-onboarding
+note: >-
+  Tiers, prices and included quotas read verbatim from the provider's
+  machine-readable api-onboarding document (which mirrors the RapidAPI listing).
+  Distribution and billing are RapidAPI marketplace only; there is no first-party
+  self-serve checkout. MVP has no contractual uptime SLA.
+pricing_url: https://rapidapi.com/Frere527/api/rowguard-csv-validation1
+billing_model: subscription (RapidAPI marketplace)
+currency: USD
+plan_count: 4
+plans:
+- name: BASIC
+  price: 0
+  billing_period: month
+  included_quota: 25 requests per month
+  rate_limit: 5 requests per minute
+  note: Free evaluation tier.
+- name: PRO
+  price: 15
+  billing_period: month
+  included_quota: 2000 requests per month
+  rate_limit: 20 requests per minute
+- name: ULTRA
+  price: 39
+  billing_period: month
+  included_quota: 10000 requests per month
+  rate_limit: 60 requests per minute
+- name: MEGA
+  price: 99
+  billing_period: month
+  included_quota: 50000 requests per month
+  rate_limit: 120 requests per minute

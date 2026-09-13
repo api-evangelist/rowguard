@@ -1,0 +1,42 @@
+generated: '2026-09-13'
+method: searched
+source: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-onboarding
+note: >-
+  Per-plan quotas and per-minute burst limits are published in the api-onboarding
+  document and enforced at the RapidAPI gateway, with an additional Cloudflare
+  Worker burst limiter at the origin (per the security page). Exhaustion returns
+  HTTP 429 with a Retry-After header (per the OpenAPI 429 response). RapidAPI does
+  not document RateLimit-* headers on the RowGuard listing.
+exhaustion_status: 429
+response_headers:
+- Retry-After
+- X-Request-Id
+limit_count: 4
+limits:
+- scope: per-subscription (BASIC plan)
+  window: month
+  limit: 25
+- scope: per-subscription (BASIC plan)
+  window: minute
+  limit: 5
+- scope: per-subscription (PRO plan)
+  window: month
+  limit: 2000
+- scope: per-subscription (PRO plan)
+  window: minute
+  limit: 20
+- scope: per-subscription (ULTRA plan)
+  window: month
+  limit: 10000
+- scope: per-subscription (ULTRA plan)
+  window: minute
+  limit: 60
+- scope: per-subscription (MEGA plan)
+  window: month
+  limit: 50000
+- scope: per-subscription (MEGA plan)
+  window: minute
+  limit: 120
+- scope: per-request payload
+  window: request
+  limit: 1000 data rows, 50 columns, 256 KiB JSON body

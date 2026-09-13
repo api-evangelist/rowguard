@@ -1,5 +1,9 @@
 name: RowGuard API Catalog
-description: RowGuard validates UTF-8 CSV data against a caller-supplied schema before database or automation imports.
+description: RowGuard validates UTF-8 CSV data against a caller-supplied column schema before it is imported
+  into a database or automation workflow. In one HTTP request it reports missing values, type and format
+  errors, out-of-range numbers, disallowed values, duplicate identifiers, and spreadsheet-formula (CSV
+  injection) risks, returning record- and column-level references and optionally the rows that passed.
+  It stores no files and calls no AI model, and is distributed through the RapidAPI marketplace.
 url: https://raw.githubusercontent.com/api-evangelist/rowguard/refs/heads/main/apis.yml
 created: '2026-09-12'
 modified: '2026-09-13'
@@ -13,8 +17,9 @@ tags:
 apis:
 - aid: rowguard-api.workers.dev:rowguard-csv-validation-api
   name: RowGuard CSV Validation API
-  description: Find missing values, invalid types, out-of-range values, duplicate identifiers and CSV formula risks
-    in one HTTP request. Results include record and column references and optional valid rows.
+  description: Find missing values, invalid types, out-of-range values, duplicate identifiers and CSV
+    formula risks in one HTTP request. Results include record and column references and optional valid
+    rows.
   humanURL: https://rowguard-api.rowguard-api.workers.dev/
   baseURL: https://rowguard-api.rowguard-api.workers.dev
   tags:
@@ -44,9 +49,44 @@ apis:
     url: https://rowguard-api.rowguard-api.workers.dev/governance/spectral.yaml
   - type: Support
     url: https://github.com/Frere527/rowguard-api-examples/issues
+  - type: OpenAPI
+    url: openapi/rowguard-openapi.json
+  - type: Overlay
+    url: overlays/rowguard-openapi-overlay.yaml
+  - type: MCPServer
+    url: mcp/rowguard-mcp.yml
+  - type: Authentication
+    url: authentication/rowguard-authentication.yml
+  - type: ErrorCatalog
+    url: errors/rowguard-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/rowguard-lifecycle.yml
+  - type: Conventions
+    url: conventions/rowguard-conventions.yml
+  - type: DataModel
+    url: data-model/rowguard-data-model.yml
+  - type: Conformance
+    url: conformance/rowguard-conformance.yml
+  - type: Sandbox
+    url: sandbox/rowguard-sandbox.yml
+  - type: Plans
+    url: plans/rowguard-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/rowguard-rate-limits.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 maintainers:
-- FN: RowGuard API Catalog
+- FN: Kin Lane
+  email: kin@apievangelist.com
+- FN: RowGuard
+  url: https://github.com/Frere527/rowguard-api-examples
 common:
+- type: VulnerabilityDisclosure
+  url: security/rowguard-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/rowguard-domain-security.yml
+- type: Authentication
+  url: authentication/rowguard-authentication.yml
 - type: Website
   url: https://rowguard-api.rowguard-api.workers.dev/
 - type: Documentation
@@ -69,7 +109,16 @@ common:
   url: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-catalog
 - type: LLMsTxt
   url: https://rowguard-api.rowguard-api.workers.dev/llms.txt
+- type: WellKnown
+  url: well-known/rowguard-well-known.yml
+- type: SecurityTxt
+  url: well-known/rowguard-security.txt
 x-source:
   via: api-search/inbox#30
   fetched: '2026-09-13'
   note: apis.json resolves; every pointer probed 200, control 404.
+x-enrichment:
+  date: '2026-09-13'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v3

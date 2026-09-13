@@ -1,0 +1,17 @@
+generated: '2026-09-13'
+method: derived
+source: openapi/rowguard-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: RapidAPIKey
+  type: apiKey
+  in: header
+  parameter: X-RapidAPI-Key
+  description: Use the subscription key at the RapidAPI gateway and include X-RapidAPI-Host.
+    The origin accepts only gateway-authenticated requests; never distribute its proxy secret.
+  sources:
+  - openapi/rowguard-openapi.json

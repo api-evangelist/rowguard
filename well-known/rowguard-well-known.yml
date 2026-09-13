@@ -1,0 +1,29 @@
+generated: '2026-09-13'
+method: probed
+source: https://rowguard-api.rowguard-api.workers.dev
+note: >-
+  Probed every well-known path on the single production origin host. api-catalog,
+  api-onboarding and security.txt returned real 200 documents (saved verbatim);
+  OIDC and OAuth discovery 404 as expected for an apiKey/RapidAPI-gateway API.
+hosts:
+- host: rowguard-api.rowguard-api.workers.dev
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: rowguard-security.txt
+  - path: /.well-known/api-catalog
+    status: 200
+    file: rowguard-api-catalog.json
+  - path: /.well-known/api-onboarding
+    status: 200
+    file: rowguard-api-onboarding.json
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404

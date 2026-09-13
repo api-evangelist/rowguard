@@ -1,0 +1,9 @@
+generated: '2026-09-13'
+method: generated
+source: openapi/rowguard-openapi.json
+api: RowGuard CSV Validation API
+skills:
+- name: rowguard-validate-csv
+  file: rowguard-validate-csv.md
+  description: Validate a UTF-8 CSV against a column schema before import; read summary and record-level errors.
+  operations: [validateCsv, getExample, health]
