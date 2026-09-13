@@ -1,0 +1,75 @@
+name: RowGuard API Catalog
+description: RowGuard validates UTF-8 CSV data against a caller-supplied schema before database or automation imports.
+url: https://raw.githubusercontent.com/api-evangelist/rowguard/refs/heads/main/apis.yml
+created: '2026-09-12'
+modified: '2026-09-13'
+specificationVersion: '0.23'
+tags:
+- CSV
+- validation
+- data quality
+- imports
+- automation
+apis:
+- aid: rowguard-api.workers.dev:rowguard-csv-validation-api
+  name: RowGuard CSV Validation API
+  description: Find missing values, invalid types, out-of-range values, duplicate identifiers and CSV formula risks
+    in one HTTP request. Results include record and column references and optional valid rows.
+  humanURL: https://rowguard-api.rowguard-api.workers.dev/
+  baseURL: https://rowguard-api.rowguard-api.workers.dev
+  tags:
+  - CSV validation
+  - data quality
+  - duplicate detection
+  - ETL
+  - workflow automation
+  properties:
+  - type: OpenAPI
+    url: https://rowguard-api.rowguard-api.workers.dev/openapi.json
+  - type: Documentation
+    url: https://documenter.getpostman.com/view/58184962/2sBYAytUGg
+  - type: GettingStarted
+    url: https://github.com/Frere527/rowguard-api-examples
+  - type: PostmanCollection
+    url: https://www.postman.com/dark-shadow-744867/rowguard-csv-validation-api/overview
+  - type: Pricing
+    url: https://rapidapi.com/Frere527/api/rowguard-csv-validation1
+  - type: APIOnboarding
+    url: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-onboarding
+  - type: TermsOfService
+    url: https://rapidapi.com/terms
+  - type: Security
+    url: https://rowguard-api.rowguard-api.workers.dev/security
+  - type: SpectralRules
+    url: https://rowguard-api.rowguard-api.workers.dev/governance/spectral.yaml
+  - type: Support
+    url: https://github.com/Frere527/rowguard-api-examples/issues
+maintainers:
+- FN: RowGuard API Catalog
+common:
+- type: Website
+  url: https://rowguard-api.rowguard-api.workers.dev/
+- type: Documentation
+  url: https://documenter.getpostman.com/view/58184962/2sBYAytUGg
+- type: Postman
+  url: https://www.postman.com/dark-shadow-744867/rowguard-csv-validation-api/overview
+- type: GitHubRepository
+  url: https://github.com/Frere527/rowguard-api-examples
+- type: Pricing
+  url: https://rapidapi.com/Frere527/api/rowguard-csv-validation1
+- type: RateLimits
+  url: https://rapidapi.com/Frere527/api/rowguard-csv-validation1
+- type: TermsOfService
+  url: https://rapidapi.com/terms
+- type: Security
+  url: https://rowguard-api.rowguard-api.workers.dev/security
+- type: APIOnboarding
+  url: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-onboarding
+- type: APICatalog
+  url: https://rowguard-api.rowguard-api.workers.dev/.well-known/api-catalog
+- type: LLMsTxt
+  url: https://rowguard-api.rowguard-api.workers.dev/llms.txt
+x-source:
+  via: api-search/inbox#30
+  fetched: '2026-09-13'
+  note: apis.json resolves; every pointer probed 200, control 404.
