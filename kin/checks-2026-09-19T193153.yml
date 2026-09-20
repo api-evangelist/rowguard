@@ -2,15 +2,15 @@
 kin_checks:
   slug: rowguard
   schema_version: 0.22.0
-  scored_at: '2026-09-18'
-  run_ts: 2026-09-18T231945
+  scored_at: '2026-09-19'
+  run_ts: 2026-09-19T193153
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 45
-    partial: 6
+    earned: 43
+    partial: 8
     missed: 59
     na: 26
   checks:
@@ -149,9 +149,17 @@ kin_checks:
     status: partial
     earned: 1.0
     detail: 1 of 3 openapi documents pass
+  - id: postman_present
+    status: partial
+    earned: 1.0
+    detail: pointer liveness 0.5
   - id: agent_skill_present
     status: partial
     earned: 0.75
+  - id: pricing_link
+    status: partial
+    earned: 2.0
+    detail: pointer liveness 0.5
   - id: auth_clarity
     status: partial
     earned: 3.5
