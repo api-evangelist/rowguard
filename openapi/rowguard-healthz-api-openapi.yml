@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: RowGuard CSV Validation Healthz API
+  version: 0.1.0
+  termsOfService: https://rapidapi.com/terms
+  description: Find CSV import errors before writing to your database. Send CSV text and a schema; get record-level errors, duplicate detection and optional valid rows. UTF-8 CSV only, at most 1,000 data rows, 50 columns, 256 KiB JSON body. No document storage, no AI calls. Email validation checks syntax only. No guarantee that output is safe for spreadsheet export. The production origin and public RapidAPI listing are verified; independent customer validation is pending.
+servers:
+- url: https://rowguard-api.rowguard-api.workers.dev
+  description: Production origin. Validation requests are accepted only from the RapidAPI gateway.
+tags:
+- name: Healthz
+paths:
+  /healthz:
+    get:
+      operationId: health
+      summary: Service configuration readiness
+      security: []
+      responses:
+        '200':
+          description: Service configured
+        '503':
+          description: Service not configured
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+            Retry-After:
+              description: Present on 429 and temporary dependency failure.
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+      tags:
+      - Healthz
+components:
+  schemas:
+    ApiError:
+      type: object
+      required:
+      - error
+      - request_id
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details: {}
+        request_id:
+          type: string
+          format: uuid
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: Use the subscription key at the RapidAPI gateway and include X-RapidAPI-Host. The origin accepts only gateway-authenticated requests; never distribute its proxy secret.

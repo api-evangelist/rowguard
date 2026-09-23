@@ -1,0 +1,29 @@
+{
+  "provider": "rowguard",
+  "sources": [
+    "_original/rowguard-openapi.json"
+  ],
+  "outputs": [
+    "rowguard-csv-validation-api-openapi.yml",
+    "rowguard-example-api-openapi.yml",
+    "rowguard-healthz-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rowguard-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "rowguard-openapi.json: tagged paths GET /v1/example -> Example",
+    "rowguard-openapi.json: tagged paths GET /healthz -> Healthz",
+    "rowguard-openapi.json: declared missing tag: CSV validation",
+    "rowguard-openapi.json: declared missing tag: Example",
+    "rowguard-openapi.json: declared missing tag: Healthz",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rowguard-csv-validation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rowguard-example-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rowguard-healthz-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

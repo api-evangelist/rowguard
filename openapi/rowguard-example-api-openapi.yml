@@ -1,0 +1,135 @@
+openapi: 3.2.0
+info:
+  title: RowGuard CSV Validation Example API
+  version: 0.1.0
+  termsOfService: https://rapidapi.com/terms
+  description: Find CSV import errors before writing to your database. Send CSV text and a schema; get record-level errors, duplicate detection and optional valid rows. UTF-8 CSV only, at most 1,000 data rows, 50 columns, 256 KiB JSON body. No document storage, no AI calls. Email validation checks syntax only. No guarantee that output is safe for spreadsheet export. The production origin and public RapidAPI listing are verified; independent customer validation is pending.
+servers:
+- url: https://rowguard-api.rowguard-api.workers.dev
+  description: Production origin. Validation requests are accepted only from the RapidAPI gateway.
+tags:
+- name: Example
+paths:
+  /v1/example:
+    get:
+      operationId: getExample
+      summary: Get a fixed synthetic request example
+      security: []
+      responses:
+        '200':
+          description: Copy this object into the validate request body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationRequest'
+              example:
+                csv: 'sku,email,quantity
+
+                  A-1,ana@example.com,3
+
+                  A-1,invalid-email,-1
+
+                  B-2,luis@example.com,5'
+                schema:
+                - name: sku
+                  required: true
+                  unique: true
+                - name: email
+                  type: email
+                  required: true
+                - name: quantity
+                  type: integer
+                  min: 0
+                include_data: true
+      tags:
+      - Example
+components:
+  schemas:
+    ValidationRequest:
+      type: object
+      properties:
+        csv:
+          type: string
+          minLength: 1
+          maxLength: 262144
+        schema:
+          minItems: 1
+          maxItems: 50
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                default: string
+                type: string
+                enum:
+                - string
+                - integer
+                - number
+                - boolean
+                - date
+                - email
+              required:
+                default: false
+                type: boolean
+              unique:
+                default: false
+                type: boolean
+              enum:
+                minItems: 1
+                maxItems: 100
+                type: array
+                items:
+                  type: string
+                  maxLength: 4096
+              min:
+                type: number
+              max:
+                type: number
+              max_length:
+                type: integer
+                minimum: 1
+                maximum: 4096
+            required:
+            - name
+            additionalProperties: false
+        delimiter:
+          default: ','
+          type: string
+          enum:
+          - ','
+          - ;
+          - "\t"
+          - '|'
+        trim:
+          default: true
+          type: boolean
+        allow_extra_columns:
+          default: false
+          type: boolean
+        formula_policy:
+          default: reject
+          type: string
+          enum:
+          - reject
+          - warn
+        include_data:
+          default: false
+          type: boolean
+        max_errors:
+          default: 100
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - csv
+      - schema
+      additionalProperties: false
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: Use the subscription key at the RapidAPI gateway and include X-RapidAPI-Host. The origin accepts only gateway-authenticated requests; never distribute its proxy secret.
