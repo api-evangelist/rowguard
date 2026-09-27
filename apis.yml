@@ -5,6 +5,22 @@ description: RowGuard validates UTF-8 CSV data against a caller-supplied column 
   injection) risks, returning record- and column-level references and optionally the rows that passed.
   It stores no files and calls no AI model, and is distributed through the RapidAPI marketplace.
 url: https://raw.githubusercontent.com/api-evangelist/rowguard/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  license_evidence:
+    not_product:
+    - frere527/rowguard-api-examples
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-not-product
+  generated: '2026-09-25'
+  method: derived
 created: '2026-09-12'
 modified: '2026-09-13'
 specificationVersion: '0.23'
@@ -25,7 +41,6 @@ apis:
   name: RowGuard API Catalog CSV validation API
   description: The CSV validation API from RowGuard API Catalog — 1 operation(s) for csv validation.
   humanURL: https://rowguard-api.rowguard-api.workers.dev/
-  baseURL: https://rowguard-api.rowguard-api.workers.dev
   tags:
   - CSV validation
   properties:
@@ -71,7 +86,6 @@ apis:
   name: RowGuard API Catalog Example API
   description: The Example API from RowGuard API Catalog — 1 operation(s) for example.
   humanURL: https://rowguard-api.rowguard-api.workers.dev/
-  baseURL: https://rowguard-api.rowguard-api.workers.dev
   tags:
   - Example
   properties:
@@ -117,7 +131,6 @@ apis:
   name: RowGuard API Catalog Healthz API
   description: The Healthz API from RowGuard API Catalog — 1 operation(s) for healthz.
   humanURL: https://rowguard-api.rowguard-api.workers.dev/
-  baseURL: https://rowguard-api.rowguard-api.workers.dev
   tags:
   - Healthz
   properties:
