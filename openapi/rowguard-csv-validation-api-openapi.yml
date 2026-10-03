@@ -260,6 +260,26 @@ components:
       - csv
       - schema
       additionalProperties: false
+    ApiError:
+      type: object
+      required:
+      - error
+      - request_id
+      properties:
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details: {}
+        request_id:
+          type: string
+          format: uuid
     ValidationResult:
       type: object
       required:
@@ -376,26 +396,6 @@ components:
               - warn
             all_values_are_strings:
               const: true
-    ApiError:
-      type: object
-      required:
-      - error
-      - request_id
-      properties:
-        error:
-          type: object
-          required:
-          - code
-          - message
-          properties:
-            code:
-              type: string
-            message:
-              type: string
-            details: {}
-        request_id:
-          type: string
-          format: uuid
   securitySchemes:
     RapidAPIKey:
       type: apiKey
