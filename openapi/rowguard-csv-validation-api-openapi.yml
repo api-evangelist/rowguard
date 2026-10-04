@@ -178,88 +178,6 @@ paths:
                 $ref: '#/components/schemas/ApiError'
 components:
   schemas:
-    ValidationRequest:
-      type: object
-      properties:
-        csv:
-          type: string
-          minLength: 1
-          maxLength: 262144
-        schema:
-          minItems: 1
-          maxItems: 50
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                default: string
-                type: string
-                enum:
-                - string
-                - integer
-                - number
-                - boolean
-                - date
-                - email
-              required:
-                default: false
-                type: boolean
-              unique:
-                default: false
-                type: boolean
-              enum:
-                minItems: 1
-                maxItems: 100
-                type: array
-                items:
-                  type: string
-                  maxLength: 4096
-              min:
-                type: number
-              max:
-                type: number
-              max_length:
-                type: integer
-                minimum: 1
-                maximum: 4096
-            required:
-            - name
-            additionalProperties: false
-        delimiter:
-          default: ','
-          type: string
-          enum:
-          - ','
-          - ;
-          - "\t"
-          - '|'
-        trim:
-          default: true
-          type: boolean
-        allow_extra_columns:
-          default: false
-          type: boolean
-        formula_policy:
-          default: reject
-          type: string
-          enum:
-          - reject
-          - warn
-        include_data:
-          default: false
-          type: boolean
-        max_errors:
-          default: 100
-          type: integer
-          minimum: 1
-          maximum: 200
-      required:
-      - csv
-      - schema
-      additionalProperties: false
     ApiError:
       type: object
       required:
@@ -396,6 +314,88 @@ components:
               - warn
             all_values_are_strings:
               const: true
+    ValidationRequest:
+      type: object
+      properties:
+        csv:
+          type: string
+          minLength: 1
+          maxLength: 262144
+        schema:
+          minItems: 1
+          maxItems: 50
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                default: string
+                type: string
+                enum:
+                - string
+                - integer
+                - number
+                - boolean
+                - date
+                - email
+              required:
+                default: false
+                type: boolean
+              unique:
+                default: false
+                type: boolean
+              enum:
+                minItems: 1
+                maxItems: 100
+                type: array
+                items:
+                  type: string
+                  maxLength: 4096
+              min:
+                type: number
+              max:
+                type: number
+              max_length:
+                type: integer
+                minimum: 1
+                maximum: 4096
+            required:
+            - name
+            additionalProperties: false
+        delimiter:
+          default: ','
+          type: string
+          enum:
+          - ','
+          - ;
+          - "\t"
+          - '|'
+        trim:
+          default: true
+          type: boolean
+        allow_extra_columns:
+          default: false
+          type: boolean
+        formula_policy:
+          default: reject
+          type: string
+          enum:
+          - reject
+          - warn
+        include_data:
+          default: false
+          type: boolean
+        max_errors:
+          default: 100
+          type: integer
+          minimum: 1
+          maximum: 200
+      required:
+      - csv
+      - schema
+      additionalProperties: false
   securitySchemes:
     RapidAPIKey:
       type: apiKey
