@@ -178,6 +178,9 @@ maintainers:
 - FN: RowGuard
   url: https://github.com/Frere527/rowguard-api-examples
 common:
+- type: CapabilityMap
+  url: capabilities/rowguard-capability-edges.yml
+  name: RowGuard API Catalog Business Capability Map
 - type: Overlay
   url: overlays/rowguard-openapi-overlay.yaml
 - type: MCPServer

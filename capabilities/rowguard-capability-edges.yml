@@ -1,0 +1,26 @@
+slug: rowguard
+provider: RowGuard API Catalog
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: CSV validation
+  spec_file: rowguard-csv-validation-api-openapi.yml
+  capability_id: BC-610.30
+  capability_id_l1: BC-610
+  capability_name: Data Quality Management
+  confidence: 0.85
+  evidence: POST /v1/validate  validateCsv  Validate a CSV before import; 'get record-level errors, duplicate
+    detection and optional valid rows'
+  reason: The operation profiles tabular data against a column schema and reports missing values, type/format
+    errors, out-of-range numbers and duplicate identifiers — data quality validation and remediation input,
+    i.e. Data Quality Management.
