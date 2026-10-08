@@ -178,6 +178,8 @@ maintainers:
 - FN: RowGuard
   url: https://github.com/Frere527/rowguard-api-examples
 common:
+- type: Plans
+  url: plans/rowguard-plans-pricing.yml
 - type: CapabilityMap
   url: capabilities/rowguard-capability-edges.yml
   name: RowGuard API Catalog Business Capability Map
