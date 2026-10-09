@@ -32,3 +32,35 @@ plans:
   billing_period: month
   included_quota: 50000 requests per month
   rate_limit: 120 requests per minute
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: BASIC
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: PRO
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: ULTRA
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: MEGA
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
