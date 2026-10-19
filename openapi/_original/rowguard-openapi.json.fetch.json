@@ -1,0 +1,12 @@
+{
+ "url": "https://rowguard-api.rowguard-api.workers.dev/openapi.json",
+ "requested_url": "https://rowguard-api.rowguard-api.workers.dev/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 8916,
+ "sha256": "ba52d5508f051bea62fa2a5a4da72c70f047d49e935c48d98a079b9e1ac88da8",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
