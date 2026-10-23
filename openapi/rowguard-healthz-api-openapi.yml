@@ -62,3 +62,9 @@ components:
       in: header
       name: X-RapidAPI-Key
       description: Use the subscription key at the RapidAPI gateway and include X-RapidAPI-Host. The origin accepts only gateway-authenticated requests; never distribute its proxy secret.
+x-provenance:
+  method: harvested
+  publisher: RowGuard API Catalog
+  source: https://rowguard-api.rowguard-api.workers.dev/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
